@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Udelp Music</string>
+    <string name="email_label">Email</string>
+    <string name="error_empty_fields">Credentials cannot be empty</string>
+    <string name="go_to_login">Already have an account? Login</string>
+    <string name="go_to_register">Don\'t have an account? Register</string>
+    <string name="loading">Loading...</string>
+    <string name="login_button">Login</string>
+    <string name="login_title">Udelp Music</string>
+    <string name="password_label">Password</string>
+    <string name="register_button">Register</string>
+    <string name="register_title">Create Account</string>
+    <string name="username_label">Username</string>
+    <string name="welcome_message">Welcome to %1$s!</string>
+</resources>

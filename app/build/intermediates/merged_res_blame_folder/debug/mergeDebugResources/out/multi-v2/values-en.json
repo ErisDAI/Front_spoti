@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "edu.udelp.music.app-mergeDebugResources-61:/values-en/values-en.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\daigu\\IdeaProjects\\newSpoti\\app-udelp-music\\app\\src\\main\\res\\values-en\\strings.xml",
+                    "from": {
+                        "startLines": "2,9,12,11,10,14,6,3,5,7,8,4,13",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "57,427,623,551,474,761,266,107,213,314,368,160,699",
+                        "endColumns": "48,45,74,70,75,46,46,51,51,52,57,51,60",
+                        "endOffsets": "101,468,693,617,545,803,308,154,260,362,421,207,755"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,104,150,225,296,372,419,466,518,570,623,681,733",
+                        "endColumns": "48,45,74,70,75,46,46,51,51,52,57,51,60",
+                        "endOffsets": "99,145,220,291,367,414,461,513,565,618,676,728,789"
+                    }
+                }
+            ]
+        }
+    ]
+}

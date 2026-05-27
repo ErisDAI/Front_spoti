@@ -1,0 +1,27 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string email_label
+string error_empty_fields
+string go_to_login
+string go_to_register
+string loading
+string login_button
+string login_title
+string password_label
+string register_button
+string register_title
+string username_label
+string welcome_message
+xml network_security_config
