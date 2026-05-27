@@ -14,5 +14,6 @@ data class ItemDto(
     val title: String,
     val subtitle: String,
     val imageUrl: String,
+    val streamUrl: String?,
     val type: String
 )

@@ -54,8 +54,15 @@ class MusicPlayerManager @Inject constructor(
                 }
 
                 _currentTrack.value = item
-                val encodedTitle = Uri.encode(item.title)
-                val url = "${edu.udelp.music.BuildConfig.BASE_URL}api/v1/streaming/$encodedTitle.mp3"
+                
+                // Si tiene una URL de streaming externa (ej. SoundCloud), la usamos directamente.
+                // De lo contrario, pedimos el flujo al backend.
+                val url = if (!item.streamUrl.isNullOrBlank()) {
+                    item.streamUrl
+                } else {
+                    val encodedTitle = Uri.encode(item.title)
+                    "${edu.udelp.music.BuildConfig.BASE_URL}api/v1/streaming/$encodedTitle.mp3"
+                }
                 
                 val player = getPlayer()
                 val mediaItem = MediaItem.fromUri(url)
