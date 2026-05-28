@@ -77,6 +77,7 @@ MERGED from [androidx.core:core-ktx:1.12.0] C:\Users\daigu\.gradle\caches\8.13\t
 MERGED from [androidx.compose.runtime:runtime-saveable-android:1.6.2] C:\Users\daigu\.gradle\caches\8.13\transforms\7aa614404fd26c06593fd9339a579383\transformed\runtime-saveable-release\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.runtime:runtime-android:1.6.2] C:\Users\daigu\.gradle\caches\8.13\transforms\b8916b5134e8fd3aca006d9d857d1239\transformed\runtime-release\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\daigu\.gradle\caches\8.13\transforms\12407f96b603493241396593ec8087c3\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.security:security-crypto:1.1.0-alpha06] C:\Users\daigu\.gradle\caches\8.13\transforms\b4ba3d2106a6c3640cafdb2f79c1fcc9\transformed\security-crypto-1.1.0-alpha06\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\daigu\.gradle\caches\8.13\transforms\24bf35b3c74a4cc17acbfb7d84400f5a\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\daigu\.gradle\caches\8.13\transforms\9143fd1e73ab45d9cd53e7c14c5674e9\transformed\exifinterface-1.3.6\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\daigu\.gradle\caches\8.13\transforms\5a4c881b390afc51e9a31b1daea88227\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -304,6 +305,8 @@ MERGED from [androidx.compose.runtime:runtime-android:1.6.2] C:\Users\daigu\.gra
 MERGED from [androidx.compose.runtime:runtime-android:1.6.2] C:\Users\daigu\.gradle\caches\8.13\transforms\b8916b5134e8fd3aca006d9d857d1239\transformed\runtime-release\AndroidManifest.xml:5:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\daigu\.gradle\caches\8.13\transforms\12407f96b603493241396593ec8087c3\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\daigu\.gradle\caches\8.13\transforms\12407f96b603493241396593ec8087c3\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.security:security-crypto:1.1.0-alpha06] C:\Users\daigu\.gradle\caches\8.13\transforms\b4ba3d2106a6c3640cafdb2f79c1fcc9\transformed\security-crypto-1.1.0-alpha06\AndroidManifest.xml:20:5-44
+MERGED from [androidx.security:security-crypto:1.1.0-alpha06] C:\Users\daigu\.gradle\caches\8.13\transforms\b4ba3d2106a6c3640cafdb2f79c1fcc9\transformed\security-crypto-1.1.0-alpha06\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\daigu\.gradle\caches\8.13\transforms\24bf35b3c74a4cc17acbfb7d84400f5a\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\daigu\.gradle\caches\8.13\transforms\24bf35b3c74a4cc17acbfb7d84400f5a\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\daigu\.gradle\caches\8.13\transforms\9143fd1e73ab45d9cd53e7c14c5674e9\transformed\exifinterface-1.3.6\AndroidManifest.xml:20:5-22:41

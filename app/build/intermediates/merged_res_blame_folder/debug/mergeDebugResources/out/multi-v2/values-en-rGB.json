@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "edu.udelp.music.app-mergeDebugResources-61:/values-en-rGB/values-en-rGB.xml",
+            "outputFile": "edu.udelp.music.app-mergeDebugResources-62:/values-en-rGB/values-en-rGB.xml",
             "map": [
                 {
                     "source": "C:\\Users\\daigu\\.gradle\\caches\\8.13\\transforms\\fed1ec0c2ff3d77a68360ea2b16477ba\\transformed\\core-1.12.0\\res\\values-en-rGB\\values-en-rGB.xml",

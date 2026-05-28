@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "edu.udelp.music.app-mergeDebugResources-61:/values-en-rAU/values-en-rAU.xml",
+            "outputFile": "edu.udelp.music.app-mergeDebugResources-62:/values-en-rAU/values-en-rAU.xml",
             "map": [
                 {
                     "source": "C:\\Users\\daigu\\.gradle\\caches\\8.13\\transforms\\6c9871589414b14d608db2ccaf9f0dae\\transformed\\media3-exoplayer-1.3.0\\res\\values-en-rAU\\values-en-rAU.xml",

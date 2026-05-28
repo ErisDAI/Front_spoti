@@ -28,6 +28,7 @@ import edu.udelp.music.ui.LanguageManager
 import edu.udelp.music.player.MusicPlayerManager
 import androidx.hilt.navigation.compose.hiltViewModel
 import javax.inject.Inject
+import edu.udelp.music.presentation.viewmodel.UiState
 import edu.udelp.music.data.remote.dto.HomeContentDto
 import edu.udelp.music.data.remote.dto.ItemDto
 
@@ -150,19 +151,32 @@ fun MainScaffold(
             when (currentScreen) {
                 "home" -> {
                     val viewModel: HomeViewModel = hiltViewModel()
-                    val state = viewModel.state.value
+                    val uiState by viewModel.uiState.collectAsState()
                     
-                    if (state.isLoading) {
-                        Box(Modifier.fillMaxSize()) {
-                            CircularProgressIndicator(Modifier.align(Alignment.Center), color = Color.Black)
+                    when (val state = uiState) {
+                        is UiState.Loading -> {
+                            Box(Modifier.fillMaxSize()) {
+                                CircularProgressIndicator(Modifier.align(Alignment.Center), color = Color.Black)
+                            }
                         }
-                    } else if (state.content != null) {
-                        HomeScreen(
-                            state.content!!, 
-                            onExpandPlayer = onExpandPlayer,
-                            onArtistClick = onArtistClick,
-                            onAlbumClick = onAlbumClick
-                        )
+                        is UiState.Success -> {
+                            HomeScreen(
+                                content = state.data, 
+                                onExpandPlayer = onExpandPlayer,
+                                onArtistClick = onArtistClick,
+                                onAlbumClick = onAlbumClick
+                            )
+                        }
+                        is UiState.Error -> {
+                            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                                Text(state.message, color = Color.Red)
+                            }
+                        }
+                        is UiState.Empty -> {
+                            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                                Text("No hay contenido disponible", color = Color.Gray)
+                            }
+                        }
                     }
                 }
                 "search" -> {

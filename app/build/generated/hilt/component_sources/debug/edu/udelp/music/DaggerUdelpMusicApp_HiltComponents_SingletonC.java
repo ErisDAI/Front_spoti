@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
+import androidx.media3.exoplayer.ExoPlayer;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import dagger.hilt.android.ActivityRetainedLifecycle;
@@ -37,11 +38,14 @@ import edu.udelp.music.di.AppModule_ProvideAuthApiFactory;
 import edu.udelp.music.di.AppModule_ProvideAuthInterceptorFactory;
 import edu.udelp.music.di.AppModule_ProvideAuthRepositoryFactory;
 import edu.udelp.music.di.AppModule_ProvideCatalogApiFactory;
+import edu.udelp.music.di.AppModule_ProvideExoPlayerFactory;
 import edu.udelp.music.di.AppModule_ProvideOkHttpClientFactory;
 import edu.udelp.music.domain.repository.AuthRepository;
 import edu.udelp.music.domain.usecase.LoginUseCase;
 import edu.udelp.music.domain.usecase.RegisterUseCase;
 import edu.udelp.music.player.MusicPlayerManager;
+import edu.udelp.music.service.MusicService;
+import edu.udelp.music.service.MusicService_MembersInjector;
 import edu.udelp.music.ui.account.AccountViewModel;
 import edu.udelp.music.ui.account.AccountViewModel_HiltModules;
 import edu.udelp.music.ui.auth.LoginViewModel;
@@ -420,33 +424,33 @@ public final class DaggerUdelpMusicApp_HiltComponents_SingletonC {
     private static final class LazyClassKeyProvider {
       static String edu_udelp_music_ui_auth_RegisterViewModel = "edu.udelp.music.ui.auth.RegisterViewModel";
 
+      static String edu_udelp_music_ui_account_AccountViewModel = "edu.udelp.music.ui.account.AccountViewModel";
+
       static String edu_udelp_music_ui_home_PlayerViewModel = "edu.udelp.music.ui.home.PlayerViewModel";
 
-      static String edu_udelp_music_ui_account_AccountViewModel = "edu.udelp.music.ui.account.AccountViewModel";
+      static String edu_udelp_music_ui_auth_LoginViewModel = "edu.udelp.music.ui.auth.LoginViewModel";
 
       static String edu_udelp_music_ui_home_HomeViewModel = "edu.udelp.music.ui.home.HomeViewModel";
 
       static String edu_udelp_music_ui_search_SearchViewModel = "edu.udelp.music.ui.search.SearchViewModel";
 
-      static String edu_udelp_music_ui_auth_LoginViewModel = "edu.udelp.music.ui.auth.LoginViewModel";
-
       @KeepFieldType
       RegisterViewModel edu_udelp_music_ui_auth_RegisterViewModel2;
+
+      @KeepFieldType
+      AccountViewModel edu_udelp_music_ui_account_AccountViewModel2;
 
       @KeepFieldType
       PlayerViewModel edu_udelp_music_ui_home_PlayerViewModel2;
 
       @KeepFieldType
-      AccountViewModel edu_udelp_music_ui_account_AccountViewModel2;
+      LoginViewModel edu_udelp_music_ui_auth_LoginViewModel2;
 
       @KeepFieldType
       HomeViewModel edu_udelp_music_ui_home_HomeViewModel2;
 
       @KeepFieldType
       SearchViewModel edu_udelp_music_ui_search_SearchViewModel2;
-
-      @KeepFieldType
-      LoginViewModel edu_udelp_music_ui_auth_LoginViewModel2;
     }
   }
 
@@ -510,35 +514,35 @@ public final class DaggerUdelpMusicApp_HiltComponents_SingletonC {
 
     @IdentifierNameString
     private static final class LazyClassKeyProvider {
-      static String edu_udelp_music_ui_search_SearchViewModel = "edu.udelp.music.ui.search.SearchViewModel";
-
       static String edu_udelp_music_ui_home_HomeViewModel = "edu.udelp.music.ui.home.HomeViewModel";
-
-      static String edu_udelp_music_ui_home_PlayerViewModel = "edu.udelp.music.ui.home.PlayerViewModel";
-
-      static String edu_udelp_music_ui_auth_RegisterViewModel = "edu.udelp.music.ui.auth.RegisterViewModel";
-
-      static String edu_udelp_music_ui_account_AccountViewModel = "edu.udelp.music.ui.account.AccountViewModel";
 
       static String edu_udelp_music_ui_auth_LoginViewModel = "edu.udelp.music.ui.auth.LoginViewModel";
 
-      @KeepFieldType
-      SearchViewModel edu_udelp_music_ui_search_SearchViewModel2;
+      static String edu_udelp_music_ui_auth_RegisterViewModel = "edu.udelp.music.ui.auth.RegisterViewModel";
+
+      static String edu_udelp_music_ui_home_PlayerViewModel = "edu.udelp.music.ui.home.PlayerViewModel";
+
+      static String edu_udelp_music_ui_search_SearchViewModel = "edu.udelp.music.ui.search.SearchViewModel";
+
+      static String edu_udelp_music_ui_account_AccountViewModel = "edu.udelp.music.ui.account.AccountViewModel";
 
       @KeepFieldType
       HomeViewModel edu_udelp_music_ui_home_HomeViewModel2;
 
       @KeepFieldType
-      PlayerViewModel edu_udelp_music_ui_home_PlayerViewModel2;
+      LoginViewModel edu_udelp_music_ui_auth_LoginViewModel2;
 
       @KeepFieldType
       RegisterViewModel edu_udelp_music_ui_auth_RegisterViewModel2;
 
       @KeepFieldType
-      AccountViewModel edu_udelp_music_ui_account_AccountViewModel2;
+      PlayerViewModel edu_udelp_music_ui_home_PlayerViewModel2;
 
       @KeepFieldType
-      LoginViewModel edu_udelp_music_ui_auth_LoginViewModel2;
+      SearchViewModel edu_udelp_music_ui_search_SearchViewModel2;
+
+      @KeepFieldType
+      AccountViewModel edu_udelp_music_ui_account_AccountViewModel2;
     }
 
     private static final class SwitchingProvider<T> implements Provider<T> {
@@ -653,12 +657,24 @@ public final class DaggerUdelpMusicApp_HiltComponents_SingletonC {
 
 
     }
+
+    @Override
+    public void injectMusicService(MusicService arg0) {
+      injectMusicService2(arg0);
+    }
+
+    private MusicService injectMusicService2(MusicService instance) {
+      MusicService_MembersInjector.injectExoPlayer(instance, singletonCImpl.provideExoPlayerProvider.get());
+      return instance;
+    }
   }
 
   private static final class SingletonCImpl extends UdelpMusicApp_HiltComponents.SingletonC {
     private final ApplicationContextModule applicationContextModule;
 
     private final SingletonCImpl singletonCImpl = this;
+
+    private Provider<ExoPlayer> provideExoPlayerProvider;
 
     private Provider<MusicPlayerManager> musicPlayerManagerProvider;
 
@@ -682,13 +698,14 @@ public final class DaggerUdelpMusicApp_HiltComponents_SingletonC {
 
     @SuppressWarnings("unchecked")
     private void initialize(final ApplicationContextModule applicationContextModuleParam) {
+      this.provideExoPlayerProvider = DoubleCheck.provider(new SwitchingProvider<ExoPlayer>(singletonCImpl, 1));
       this.musicPlayerManagerProvider = DoubleCheck.provider(new SwitchingProvider<MusicPlayerManager>(singletonCImpl, 0));
-      this.sessionManagerProvider = DoubleCheck.provider(new SwitchingProvider<SessionManager>(singletonCImpl, 4));
-      this.provideAuthInterceptorProvider = DoubleCheck.provider(new SwitchingProvider<Interceptor>(singletonCImpl, 3));
-      this.provideOkHttpClientProvider = DoubleCheck.provider(new SwitchingProvider<OkHttpClient>(singletonCImpl, 2));
-      this.provideAuthApiProvider = DoubleCheck.provider(new SwitchingProvider<AuthApi>(singletonCImpl, 1));
-      this.provideCatalogApiProvider = DoubleCheck.provider(new SwitchingProvider<CatalogApi>(singletonCImpl, 5));
-      this.provideAuthRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<AuthRepository>(singletonCImpl, 6));
+      this.sessionManagerProvider = DoubleCheck.provider(new SwitchingProvider<SessionManager>(singletonCImpl, 5));
+      this.provideAuthInterceptorProvider = DoubleCheck.provider(new SwitchingProvider<Interceptor>(singletonCImpl, 4));
+      this.provideOkHttpClientProvider = DoubleCheck.provider(new SwitchingProvider<OkHttpClient>(singletonCImpl, 3));
+      this.provideAuthApiProvider = DoubleCheck.provider(new SwitchingProvider<AuthApi>(singletonCImpl, 2));
+      this.provideCatalogApiProvider = DoubleCheck.provider(new SwitchingProvider<CatalogApi>(singletonCImpl, 6));
+      this.provideAuthRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<AuthRepository>(singletonCImpl, 7));
     }
 
     @Override
@@ -707,7 +724,7 @@ public final class DaggerUdelpMusicApp_HiltComponents_SingletonC {
     }
 
     @Override
-    public void injectUdelpMusicApp(UdelpMusicApp udelpMusicApp) {
+    public void injectUdelpMusicApp(UdelpMusicApp arg0) {
     }
 
     private static final class SwitchingProvider<T> implements Provider<T> {
@@ -725,24 +742,27 @@ public final class DaggerUdelpMusicApp_HiltComponents_SingletonC {
       public T get() {
         switch (id) {
           case 0: // edu.udelp.music.player.MusicPlayerManager 
-          return (T) new MusicPlayerManager(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
+          return (T) new MusicPlayerManager(singletonCImpl.provideExoPlayerProvider.get());
 
-          case 1: // edu.udelp.music.data.remote.AuthApi 
+          case 1: // androidx.media3.exoplayer.ExoPlayer 
+          return (T) AppModule_ProvideExoPlayerFactory.provideExoPlayer(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
+
+          case 2: // edu.udelp.music.data.remote.AuthApi 
           return (T) AppModule_ProvideAuthApiFactory.provideAuthApi(singletonCImpl.provideOkHttpClientProvider.get());
 
-          case 2: // okhttp3.OkHttpClient 
+          case 3: // okhttp3.OkHttpClient 
           return (T) AppModule_ProvideOkHttpClientFactory.provideOkHttpClient(singletonCImpl.provideAuthInterceptorProvider.get());
 
-          case 3: // okhttp3.Interceptor 
+          case 4: // okhttp3.Interceptor 
           return (T) AppModule_ProvideAuthInterceptorFactory.provideAuthInterceptor(singletonCImpl.sessionManagerProvider.get());
 
-          case 4: // edu.udelp.music.data.local.SessionManager 
+          case 5: // edu.udelp.music.data.local.SessionManager 
           return (T) new SessionManager(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
 
-          case 5: // edu.udelp.music.data.remote.CatalogApi 
+          case 6: // edu.udelp.music.data.remote.CatalogApi 
           return (T) AppModule_ProvideCatalogApiFactory.provideCatalogApi(singletonCImpl.provideOkHttpClientProvider.get());
 
-          case 6: // edu.udelp.music.domain.repository.AuthRepository 
+          case 7: // edu.udelp.music.domain.repository.AuthRepository 
           return (T) AppModule_ProvideAuthRepositoryFactory.provideAuthRepository(singletonCImpl.provideAuthApiProvider.get(), singletonCImpl.sessionManagerProvider.get());
 
           default: throw new AssertionError(id);

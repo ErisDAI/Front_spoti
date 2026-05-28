@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "edu.udelp.music.app-mergeDebugResources-61:/values-zh-rCN/values-zh-rCN.xml",
+            "outputFile": "edu.udelp.music.app-mergeDebugResources-62:/values-zh-rCN/values-zh-rCN.xml",
             "map": [
                 {
                     "source": "C:\\Users\\daigu\\.gradle\\caches\\8.13\\transforms\\676f8545e90daa68eae1a0a30ba08b2a\\transformed\\material3-release\\res\\values-zh-rCN\\values-zh-rCN.xml",

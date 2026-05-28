@@ -96,6 +96,9 @@ dependencies {
     // Coil
     implementation("io.coil-kt:coil-compose:2.5.0")
 
+    // Security
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+
     // H2 Database para Android (Reemplaza a Room)
     implementation("com.h2database:h2:2.2.224")
 

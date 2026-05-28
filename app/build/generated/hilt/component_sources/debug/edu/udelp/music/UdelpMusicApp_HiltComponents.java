@@ -45,6 +45,7 @@ import dagger.hilt.components.SingletonComponent;
 import dagger.hilt.internal.GeneratedComponent;
 import dagger.hilt.migration.DisableInstallInCheck;
 import edu.udelp.music.di.AppModule;
+import edu.udelp.music.service.MusicService_GeneratedInjector;
 import edu.udelp.music.ui.account.AccountViewModel_HiltModules;
 import edu.udelp.music.ui.auth.LoginViewModel_HiltModules;
 import edu.udelp.music.ui.auth.RegisterViewModel_HiltModules;
@@ -150,7 +151,8 @@ public final class UdelpMusicApp_HiltComponents {
   @Subcomponent
   @ServiceScoped
   public abstract static class ServiceC implements ServiceComponent,
-      GeneratedComponent {
+      GeneratedComponent,
+      MusicService_GeneratedInjector {
     @Subcomponent.Builder
     abstract interface Builder extends ServiceComponentBuilder {
     }

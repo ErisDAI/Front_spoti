@@ -18,10 +18,17 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import edu.udelp.music.data.local.SessionManager
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import androidx.media3.exoplayer.ExoPlayer
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Provides
+    @Singleton
+    fun provideExoPlayer(@ApplicationContext context: Context): ExoPlayer {
+        return ExoPlayer.Builder(context).build()
+    }
 
     @Provides
     @Singleton

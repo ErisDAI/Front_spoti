@@ -15,10 +15,8 @@ import javax.inject.Singleton
 
 @Singleton
 class MusicPlayerManager @Inject constructor(
-    @ApplicationContext private val context: Context
+    private val exoPlayer: ExoPlayer
 ) {
-    private var exoPlayer: ExoPlayer? = null
-    
     private val _currentTrack = mutableStateOf<ItemDto?>(null)
     val currentTrack: State<ItemDto?> = _currentTrack
     
@@ -27,17 +25,6 @@ class MusicPlayerManager @Inject constructor(
 
     private var playlist: List<ItemDto> = emptyList()
     private var currentIndex: Int = -1
-
-    private fun getPlayer(): ExoPlayer {
-        if (exoPlayer == null) {
-            if (Looper.myLooper() != Looper.getMainLooper()) {
-                // Fallback for non-main thread access (safety)
-            } else {
-                exoPlayer = ExoPlayer.Builder(context).build()
-            }
-        }
-        return exoPlayer!!
-    }
 
     fun playTrack(item: ItemDto, newPlaylist: List<ItemDto> = emptyList()) {
         val mainHandler = Handler(Looper.getMainLooper())
@@ -55,8 +42,6 @@ class MusicPlayerManager @Inject constructor(
 
                 _currentTrack.value = item
                 
-                // Si tiene una URL de streaming externa (ej. SoundCloud), la usamos directamente.
-                // De lo contrario, pedimos el flujo al backend.
                 val url = if (!item.streamUrl.isNullOrBlank()) {
                     item.streamUrl
                 } else {
@@ -64,11 +49,10 @@ class MusicPlayerManager @Inject constructor(
                     "${edu.udelp.music.BuildConfig.BASE_URL}api/v1/streaming/$encodedTitle.mp3"
                 }
                 
-                val player = getPlayer()
                 val mediaItem = MediaItem.fromUri(url)
-                player.setMediaItem(mediaItem)
-                player.prepare()
-                player.play()
+                exoPlayer.setMediaItem(mediaItem)
+                exoPlayer.prepare()
+                exoPlayer.play()
                 _isPlaying.value = true
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -106,20 +90,17 @@ class MusicPlayerManager @Inject constructor(
     fun togglePlayPause() {
         val mainHandler = Handler(Looper.getMainLooper())
         mainHandler.post {
-            exoPlayer?.let {
-                if (it.isPlaying) {
-                    it.pause()
-                    _isPlaying.value = false
-                } else {
-                    it.play()
-                    _isPlaying.value = true
-                }
+            if (exoPlayer.isPlaying) {
+                exoPlayer.pause()
+                _isPlaying.value = false
+            } else {
+                exoPlayer.play()
+                _isPlaying.value = true
             }
         }
     }
 
     fun release() {
-        exoPlayer?.release()
-        exoPlayer = null
+        exoPlayer.release()
     }
 }

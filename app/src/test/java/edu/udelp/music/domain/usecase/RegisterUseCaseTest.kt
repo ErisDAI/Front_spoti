@@ -30,8 +30,9 @@ class RegisterUseCaseTest {
 
     @Test
     fun `invoke with valid data returns success`() = runBlocking {
+        val session = edu.udelp.music.domain.model.UserSession("token", "user", "email@test.com")
         `when`(repository.register("user", "email@test.com", "pass"))
-            .thenReturn(Result.success(Unit))
+            .thenReturn(Result.success(session))
         
         val result = registerUseCase("user", "email@test.com", "pass")
         assertTrue(result.isSuccess)

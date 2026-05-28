@@ -39,6 +39,7 @@ import hilt_aggregated_deps._dagger_hilt_android_internal_modules_HiltWrapper_Ac
 import hilt_aggregated_deps._edu_udelp_music_MainActivity_GeneratedInjector;
 import hilt_aggregated_deps._edu_udelp_music_UdelpMusicApp_GeneratedInjector;
 import hilt_aggregated_deps._edu_udelp_music_di_AppModule;
+import hilt_aggregated_deps._edu_udelp_music_service_MusicService_GeneratedInjector;
 import hilt_aggregated_deps._edu_udelp_music_ui_account_AccountViewModel_HiltModules_BindsModule;
 import hilt_aggregated_deps._edu_udelp_music_ui_account_AccountViewModel_HiltModules_KeyModule;
 import hilt_aggregated_deps._edu_udelp_music_ui_auth_LoginViewModel_HiltModules_BindsModule;
@@ -94,6 +95,7 @@ import hilt_aggregated_deps._edu_udelp_music_ui_search_SearchViewModel_HiltModul
         _edu_udelp_music_MainActivity_GeneratedInjector.class,
         _edu_udelp_music_UdelpMusicApp_GeneratedInjector.class,
         _edu_udelp_music_di_AppModule.class,
+        _edu_udelp_music_service_MusicService_GeneratedInjector.class,
         _edu_udelp_music_ui_account_AccountViewModel_HiltModules_BindsModule.class,
         _edu_udelp_music_ui_account_AccountViewModel_HiltModules_KeyModule.class,
         _edu_udelp_music_ui_auth_LoginViewModel_HiltModules_BindsModule.class,
